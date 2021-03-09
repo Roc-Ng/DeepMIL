@@ -3,12 +3,14 @@ import torch
 from sklearn.metrics import auc, roc_curve, precision_recall_curve
 import numpy as np
 
+
 def test(dataloader, model, args, viz, device):
     with torch.no_grad():
         model.eval()
-        pred = torch.zeros(0)
+        pred = torch.zeros(0, device=device)
         for i, input in enumerate(dataloader):
             input = input.to(device)
+            # print(input.shape)
             logits = model(inputs=input)
             logits = torch.squeeze(logits, 1)
             logits = torch.mean(logits, 0)

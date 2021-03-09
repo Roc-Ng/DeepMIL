@@ -8,8 +8,10 @@ from dataset import Dataset
 from test import test
 import option
 from utils import Visualizer
+
 viz = Visualizer(env='DeepMIL', use_incoming_socket=False)
-torch.set_default_tensor_type('torch.cuda.FloatTensor')
+# torch.set_default_tensor_type('torch.cuda.FloatTensor')
+
 
 if __name__ == '__main__':
     os.environ["CUDA_VISIBLE_DEVICES"] = '1'

@@ -35,6 +35,7 @@ class Visualizer(object):
     def scatter(self, name, data):
         self.vis.scatter(X=data, win=name)
 
+
 def process_feat(feat, length):
     new_feat = np.zeros((length, feat.shape[1])).astype(np.float32)
     r = np.linspace(0, len(feat), length+1, dtype=np.int)

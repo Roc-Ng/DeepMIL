@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 import torch.nn.functional as F
-torch.set_default_tensor_type('torch.cuda.FloatTensor')
+# torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
 
 def smooth(arr, lamda1):
@@ -39,6 +39,7 @@ def train(nloader, aloader, model, batch_size, optimizer, viz, device):
             ninput = ninput.view(batch_size*32,-1)
             ainput = ainput.view(batch_size * 32, -1)
             input = torch.cat((ninput, ainput), 0).to(device)
+            # print(input.shape)
             scores = model(input)  # b*32  x 2048
             loss = ranking(scores, batch_size) + sparsity(scores, 8e-5) + smooth(scores, 8e-5)
 

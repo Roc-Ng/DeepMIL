@@ -1,13 +1,15 @@
 import torch
 import torch.nn as nn
 import torch.nn.init as torch_init
-torch.set_default_tensor_type('torch.cuda.FloatTensor')
+# torch.set_default_tensor_type('torch.cuda.FloatTensor')
+
 
 def weight_init(m):
     classname = m.__class__.__name__
     if classname.find('Conv') != -1 or classname.find('Linear') != -1:
         torch_init.xavier_uniform_(m.weight)
         m.bias.data.fill_(0)
+
 
 class Model(nn.Module):
     def __init__(self, n_features):
