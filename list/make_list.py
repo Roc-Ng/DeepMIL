@@ -1,4 +1,3 @@
-import numpy as np
 import os
 import glob
 
@@ -7,7 +6,8 @@ import glob
 FOR UCF CRIME
 '''
 root_path = '/home/wucx/dataset/UCF-Crime/I3D/Train/RGB/'
-dirs = os.listdir(root_path)
+dirs = sorted(glob.glob(os.path.join(root_path, "*")))
+# dirs = sorted(os.listdir(root_path)) # 两种用法都可以
 print(dirs)
 with open('list/ucf-i3d.list', 'w+') as f:
     normal = []
