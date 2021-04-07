@@ -1,7 +1,5 @@
-import torch
 import torch.nn as nn
 import torch.nn.init as torch_init
-# torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
 
 def weight_init(m):

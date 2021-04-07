@@ -1,10 +1,16 @@
 from torch.utils.data import DataLoader
-
 import torch.optim as optim
 import torch
 import os
 import random
 import numpy as np
+
+from model import Model
+from dataset import Dataset
+from train import train
+from test import test
+import option
+from utils import Visualizer
 
 
 def setup_seed(seed):
@@ -15,32 +21,13 @@ def setup_seed(seed):
     torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)  #并行gpu
 
+
 setup_seed(int(2333))  # 1577677170  2333
-
-
-from model import Model
-from dataset import Dataset
-from train import train
-from test import test
-import option
-
-from utils import Visualizer
-
-from multiprocessing import set_start_method
-
-'''
-set_default_tensor_type会引起报错
-'''
-# torch.set_default_tensor_type('torch.cuda.FloatTensor')
-
-viz = Visualizer(env='DeepMIL', use_incoming_socket=False)
+viz = Visualizer(env='DeepMIL', use_incoming_socket=True)
+# torch.set_default_tensor_type('torch.cuda.FloatTensor') # 会引起报错
 
 
 if __name__ == '__main__':
-    '''
-    不设置spawn会导致pytorch在使用multiprocessing时报错
-    '''
-    set_start_method('spawn')
 
     args = option.parser.parse_args()
     device = torch.device("cuda")  # 将torch.Tensor分配到的设备的对象
@@ -60,7 +47,7 @@ if __name__ == '__main__':
     model = Model(args.feature_size)
 
     for name, value in model.named_parameters():
-        print(name)
+        print(name, value.shape)
 
     torch.cuda.set_device(args.gpus)
     model = model.to(device)
@@ -79,5 +66,5 @@ if __name__ == '__main__':
         if epoch % 1 == 0 and not epoch == 0:
             torch.save(model.state_dict(), './ckpt/'+args.model_name+'{}-i3d.pkl'.format(epoch))
         auc = test(test_loader, model, args, viz, device)
-        print('Epoch {0}/{1}: auc:{2}\n'.format(epoch, args.max_epoch, auc))
+        print('Epoch {0}/{1}: auc:{2}\n'.format(epoch + 1, args.max_epoch, auc))
     torch.save(model.state_dict(), './ckpt/' + args.model_name + 'final.pkl')

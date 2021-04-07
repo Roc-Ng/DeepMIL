@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import torch
 from sklearn.metrics import auc, roc_curve, precision_recall_curve
 import numpy as np
@@ -19,11 +18,11 @@ def test(dataloader, model, args, viz, device):
         gt = np.load(args.gt)
         pred = list(pred.cpu().detach().numpy())
         pred = np.repeat(np.array(pred), 16)
-        fpr, tpr, threshold = roc_curve(list(gt), pred)  ###计算真正率和假正率
+        fpr, tpr, _ = roc_curve(list(gt), pred)  ###计算真正率和假正率
         np.save('fpr.npy', fpr)
         np.save('tpr.npy', tpr)
         rec_auc = auc(fpr, tpr)  ###计算auc的值
-        precision, recall, th = precision_recall_curve(list(gt), pred)
+        precision, recall, _ = precision_recall_curve(list(gt), pred)
         pr_auc = auc(recall, precision)
         np.save('precision.npy', precision)
         np.save('recall.npy', recall)
@@ -32,4 +31,3 @@ def test(dataloader, model, args, viz, device):
         viz.lines('scores', pred)
         viz.lines('roc', tpr, fpr)
         return rec_auc, pr_auc
-

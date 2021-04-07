@@ -1,8 +1,6 @@
 import torch.utils.data as data
 import numpy as np
 from utils import process_feat
-import torch
-# torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
 
 class Dataset(data.Dataset):

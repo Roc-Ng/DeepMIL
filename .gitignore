@@ -1,4 +1,5 @@
 __pycache__
+.vscode
 ckpt
 fpr.npy
 tpr.npy

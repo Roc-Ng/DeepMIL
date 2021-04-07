@@ -1,7 +1,5 @@
-import numpy as np
 import torch
 import torch.nn.functional as F
-# torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
 
 def smooth(arr, lamda1):
