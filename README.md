@@ -8,7 +8,7 @@ Unofficial implemention of "Real-world Anomaly Detection in Surveillance Videos"
 
 we have released I3D features of UCF-Crime, which can be downloaded from: https://stuxidianeducn-my.sharepoint.com/:f:/g/personal/pengwu_stu_xidian_edu_cn/EvYcZ5rQZClGs_no2g-B0jcB4ynsonVQIreHIojNnUmPyA?e=xNrGxc
 
-**where we oversample each video frame with the "10-crop" augment, "10-crop" means cropping images into the center, four corners, and their mirrored counterparts. *__0.npy* is the center, *__1.npy* ~ *__4.npy* is the corners, and *__5.npy* ~ *__9.npy* is the mirrored counterparts.**
+**where we oversample each video frame with the "10-crop" augment, "10-crop" means cropping images into the center, four corners, and their mirrored counterparts. *__0.npy* (or *.npy*) is the center, *__1.npy* ~ *__4.npy* is the corners, and *__5.npy* ~ *__9.npy* is the mirrored counterparts.**
 
 **The file of ground truth is *list/gt-ucf.npy*, and the order of ground truth is the same as in *list/ucf-c3d.list*.**
 
