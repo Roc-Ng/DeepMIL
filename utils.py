@@ -19,7 +19,7 @@ class Visualizer(object):
         '''
         x = self.index.get(name, 0)
         self.vis.line(Y=np.array([y]), X=np.array([x]),
-                      win=str(name),
+                      win=name,
                       opts=dict(title=name),
                       update=None if x == 0 else 'append',
                       **kwargs
@@ -29,9 +29,9 @@ class Visualizer(object):
         self.vis.image(img=img, win=name, opts=dict(title=name))
     def lines(self, name, line, X=None):
         if X is None:
-            self.vis.line(Y=line, win=name)
+            self.vis.line(Y=line, win=name, opts=dict(title=name))
         else:
-            self.vis.line(X=X, Y=line, win=name)
+            self.vis.line(X=X, Y=line, win=name, opts=dict(title=name))
     def scatter(self, name, data):
         self.vis.scatter(X=data, win=name)
 

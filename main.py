@@ -31,6 +31,12 @@ if __name__ == '__main__':
 
     args = option.parser.parse_args()
     device = torch.device("cuda")  # 将torch.Tensor分配到的设备的对象
+    torch.cuda.set_device(args.gpus)
+
+    model = Model(args.feature_size)
+    model = model.to(device)
+    for name, value in model.named_parameters():
+        print(name, value.shape)
 
     train_nloader = DataLoader(Dataset(args, test_mode=False, is_normal=True),
                               batch_size=args.batch_size, shuffle=True,
@@ -43,14 +49,6 @@ if __name__ == '__main__':
     test_loader = DataLoader(Dataset(args, test_mode=True),
                               batch_size=1, shuffle=False,  ####
                               num_workers=args.workers, pin_memory=True)
-
-    model = Model(args.feature_size)
-
-    for name, value in model.named_parameters():
-        print(name, value.shape)
-
-    torch.cuda.set_device(args.gpus)
-    model = model.to(device)
 
     if not os.path.exists('./ckpt'):
         os.makedirs('./ckpt')
