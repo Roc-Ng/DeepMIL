@@ -2,11 +2,11 @@
 
 Unofficial implemention of "Real-world Anomaly Detection in Surveillance Videos" CVPR2018
 
-~~The feature extractor is here: https://github.com/DavideA/c3d-pytorch~~
+~~The feature extractor is here: [https://github.com/DavideA/c3d-pytorch]~~
 
 *To achieve better performance, we suggest use I3D features rather than C3D features.*
 
-we have released I3D features of UCF-Crime, which can be downloaded from: https://stuxidianeducn-my.sharepoint.com/:f:/g/personal/pengwu_stu_xidian_edu_cn/EvYcZ5rQZClGs_no2g-B0jcB4ynsonVQIreHIojNnUmPyA?e=xNrGxc
+we have released I3D features of UCF-Crime, which can be downloaded from: [https://stuxidianeducn-my.sharepoint.com/:f:/g/personal/pengwu_stu_xidian_edu_cn/EvYcZ5rQZClGs_no2g-B0jcB4ynsonVQIreHIojNnUmPyA?e=xNrGxc]
 
 **where we oversample each video frame with the "10-crop" augment, "10-crop" means cropping images into the center, four corners, and their mirrored counterparts. *__0.npy* (or *.npy*) is the center, *__1.npy* ~ *__4.npy* is the corners, and *__5.npy* ~ *__9.npy* is the mirrored counterparts.**
 
@@ -27,6 +27,6 @@ we have released I3D features of UCF-Crime, which can be downloaded from: https:
 
 ---
 
-We also released a audio-visual violence dataset named XD-Violence (ECCV2020), the project website is here: https://roc-ng.github.io/XD-Violence/ . We also have released the I3D and VGGish features of our dataset. 
+We also released a audio-visual violence dataset named XD-Violence (ECCV2020), the project website is here: [https://roc-ng.github.io/XD-Violence/]. We also have released the I3D and VGGish features of our dataset.
 
 Thanks for your attention!
