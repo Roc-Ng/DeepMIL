@@ -24,6 +24,17 @@ where we oversample each video frame with the “10-crop” augment, “10-crop�
 
 ---
 
-We also released a audio-visual violence dataset named XD-Violence (ECCV2020), the project website is here: https://roc-ng.github.io/XD-Violence/ . We also have released the I3D and VGGish features of our dataset. 
+We also released a audio-visual violence dataset named XD-Violence (ECCV2020), the project website is here: https://roc-ng.github.io/XD-Violence/ . We have released the I3D and VGGish features of our dataset as well as the code. 
+
+---
+**In order to make training process faster, we suggest use the following code to replace original code in train.py [Line 34]**
+```python
+model.train()
+n_iter = iter(nloader)
+a_iter = iter(aloader)
+for i in range(30):  # 800/batch_size
+    ninput = next(n_iter)
+    ainput = next(a_iter)
+```
 
 Thanks for your attention!
