@@ -46,7 +46,7 @@ def train(nloader, aloader, model, batch_size, optimizer, viz, plot_freq, device
             input = torch.cat((ninput, ainput), 0).to(device)
 
             scores = model(input)  # b*32  x 2048
-            loss = (ranking(scores, batch_size) + sparsity(scores, 8e-5) + smooth(scores, 8e-5))
+            loss = ranking(scores, batch_size) # + sparsity(scores, 8e-5) + smooth(scores, 8e-5)
 
             if i % plot_freq == 0:
                 viz.plot_lines('loss', loss.item())
