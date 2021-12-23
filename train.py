@@ -40,7 +40,7 @@ def train(nloader, aloader, model, batch_size, optimizer, viz, device):
             ainput = ainput.view(batch_size * 32, -1)
             input = torch.cat((ninput, ainput), 0).to(device)
             scores = model(input)  # b*32  x 2048
-            loss = ranking(scores, batch_size) + sparsity(scores, 8e-5) + smooth(scores, 8e-5)
+            loss = ranking(scores, batch_size) # + sparsity(scores, 8e-5) + smooth(scores, 8e-5)
 
             if i % 2 == 0:
                 viz.plot_lines('loss', loss.item())
